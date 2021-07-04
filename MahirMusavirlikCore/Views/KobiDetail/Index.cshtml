@@ -1,0 +1,249 @@
+﻿@model MahirMusavirlikCore.Models.KobilerveHizmetler
+@{
+    ViewBag.Title = "KobiDetail";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+@foreach (var x in Model.Kobiler)
+{
+    <div class="x_panel">
+        <div class="x_title">
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                <div class="profile_img">
+                    <div id="crop-avatar">
+                        <!-- Current avatar -->
+                        <img class="img-responsive avatar-view" src="~/master/production/images/user.png" alt="Avatar" title="Change the avatar">
+                    </div>
+                </div>
+                <h3>@x.KobiUnvan</h3>
+
+                <ul class="list-unstyled user_data">
+                    <li>
+                        Kobi Kodu: @x.KobiKodu
+                    </li>
+
+                    <li>
+                        Kobi Adresi: @x.KobiAddress
+                    </li>
+                    <li>
+                        Kobi Vergi No: @x.KobiVergiNo
+                    </li>
+                    <li>
+                        Kobi Vergi Daire: @x.KobiVergiDaire
+                    </li>
+                    <li>
+                        Kobi Yetkili: @x.KobiYetkili
+                    </li>
+                    <li>
+                        Kobi Tc No: @x.KobiTcNo
+                    </li>
+                    <li>
+                        Kobi E-Devlet Şifre: @x.KobiEDevletSifre
+                    </li>
+                    <li>
+                        Kobi E-İmza Şifre: @x.KobiEİmzaSifre
+                    </li>
+                    <li>
+                        Kobi Referans: @x.KobiReferans
+                    </li>
+                    <li>
+                        Kobi Mali Müşavir: @x.KobiMaliMusaviri
+                    </li>
+                    <li>
+                        Kobi Telefon: @x.KobiPhone
+                    </li>
+                    <li>
+                        İletişim Personeli: @x.KobiPer
+                    </li>
+                    <li>
+                        Kobi Email: @x.KobiMail
+                    </li>
+                    <li>
+                        Kobi Email Şifresi: @x.KobiPassword
+                    </li>
+                    <br />
+                    <li class="m-top-xs">
+                        <i class="fa fa-external-link user-profile-icon"></i>
+                        <a href="https://www.mahirmusavirlik.com.tr/" target="_blank">https://www.mahirmusavirlik.com.tr/</a>
+                    </li>
+
+                    <li class="m-top-xs">
+                        <i class="fa fa-external-link user-profile-icon"></i>
+                        <a href="/KobiDetail/KobiOzelDosya/@ViewBag.vl3">Kobiye özel dosya yükle</a>
+                    </li>
+                </ul>
+
+                @*<a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Hizmet Oluştur</a>*@
+                <br />
+            </div>
+
+            
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="">
+                            <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">Hizmet Oluştur</a>
+                        </li>
+                        <li role="presentation" class="active">
+                            <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="true">Açılan Hizmetler</a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="true">Kobi Özel Dosyalar</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content1" aria-labelledby="home-tab">
+                            <form id="demo-form2" action="/KobiDetail/HizmetOlustur" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <input type="hidden" name="KobiId" value="@ViewBag.vl3" />
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        Ana Hizmet <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.DropDownList("AnaHizmetId", (List<SelectListItem>)ViewBag.vl1, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        Alt Hizmet <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.DropDownList("AltHizmetId", (List<SelectListItem>)ViewBag.vl2, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        Dosya Adı <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="DosyaAdi" class="form-control" value="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        Dosya Durumu <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="DosyaDurumu" class="form-control" value="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        Anlaşma Şekli <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="AnlasmaSekli" class="form-control" value="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        Açık - Kapalı <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.DropDownList("ServiceSituationId", (List<SelectListItem>)ViewBag.vl4, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <button type="submit" class="btn btn-success">Ekle</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">
+
+                            <!-- start user projects -->
+                            <table class="data table table-striped no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Ana Hizmet</th>
+                                        <th>Alt Hizmet</th>
+                                        <th class="hidden-phone">Dosya Adı</th>
+                                        <th>Anlaşma Şekli</th>
+                                        <th>Dosya Durumu</th>
+                                        <th>Açık - Kapalı</th>
+                                        <th>Güncelle</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.KobiHizmetler)
+                                    {
+                                        <tr>
+                                            <td>@item.AnaHizmet.AnaHizmetAdi</td>
+                                            <td>@item.AltHizmet.AltHizmetAdi</td>
+                                            <td>@item.DosyaAdi</td>
+                                            <td>@item.AnlasmaSekli</td>
+                                            <td>@item.DosyaDurumu</td>
+                                            <td>@item.ServiceSituation.SituationName</td>
+                                            <td><a href="/File/EditService/@item.KobiHizmetId" class="btn btn-success btn-sm">Güncelle</a></td>
+                                            <td><a href="/File/Index/@item.KobiHizmetId" class="btn btn-primary btn-sm">Alt Hizmet Detayı</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+
+                            <!-- start user projects -->
+                            <table class="data table table-striped no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Dosya Adı</th>
+                                        <th>İndir</th>
+                                        <th class="hidden-phone">Sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.KobiOzelDosyas)
+                                    {
+                                        <tr>
+                                            <td><a href="~/Files/@item.UniqueId" />@item.DosyaAdi</td>
+                                            <td><a href="~/Files/@item.UniqueId" class="btn btn-success btn-sm">Görüntüle</a></td>
+                                            <td><a href="@Url.Action("DeleteFile","File")?ui=@item.UniqueId" onclick="return confirm('Silmek istediğinize emin misiniz?')" class="btn btn-danger btn-sm">Sil</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+}
+
+
+
+

@@ -1,0 +1,84 @@
+﻿@model MahirMusavirlikCore.Models.KobilerveHizmetler
+
+<div class="modal fade" id="editService">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="editServiceLabel">Hizmet Düzenle</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>Kapat</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="demo-form2" action="/KobiDetail/HizmetOlustur" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                    <input type="hidden" name="KobiId" value="@ViewBag.vl3" />
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Ana Hizmet <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownList("AnaHizmetId", (List<SelectListItem>)ViewBag.vl1, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Alt Hizmet <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownList("AltHizmetId", (List<SelectListItem>)ViewBag.vl2, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Dosya Adı <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="DosyaAdi" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Dosya Durumu <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="DosyaDurumu" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Anlaşma Şekli <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="AnlasmaSekli" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Açık - Kapalı <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownList("ServiceSituationId", (List<SelectListItem>)ViewBag.vl4, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button type="submit" class="btn btn-success">Ekle</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Kapat</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

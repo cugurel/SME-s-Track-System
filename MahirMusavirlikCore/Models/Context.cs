@@ -10,7 +10,6 @@ namespace MahirMusavirlikCore.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("server = 77.245.159.23\\MSSQLSERVER2019; database = mahirmusavir; user id=mahirmusavirmm; password=Xdjy64_1;");
             optionsBuilder.UseSqlServer("server = LAPTOP-6RP07O6C; database = mahirmusavir; integrated security=true;");
         }
 

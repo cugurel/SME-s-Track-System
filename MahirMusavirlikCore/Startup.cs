@@ -32,7 +32,6 @@ namespace MahirMusavirlikCore
         {
             services.AddWkhtmltopdf("wkhtmltopdf");
             services.AddDbContext<ApplicationContext>(
-                //options => options.UseSqlServer("server = 77.245.159.23\\MSSQLSERVER2019; database = mahirmusavir; user id=mahirmusavirmm; password=Xdjy64_1;")
                 options => options.UseSqlServer("server = LAPTOP-6RP07O6C; database = mahirmusavir; integrated security=true;")
                 );
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
